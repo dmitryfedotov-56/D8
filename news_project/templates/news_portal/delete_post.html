@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+<% block title %> delete post <% endblock title %>
+
+{%block content%}
+    <h2>Вы действительно хотите удалить данный пост?</h2>
+    <br>
+    <br>
+    Название : {{post_detail.title}}<br>
+    Автор &nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.author}}<br>
+    Тип &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+        {{post_detail.post_type|appearance:'неизвестен'}}
+        <br>
+    Дата &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.time_stamp|date:'M d Y' }}&nbsp;{{ post_detail.time_stamp|time:"H:i" }}<br>
+    Рейтинг &nbsp; : {{post_detail.rating}}<br>
+    Текст &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.text|censor:'***'}}
+    <br>
+    <br>
+    <form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить"></form>
+{%endblock content%}

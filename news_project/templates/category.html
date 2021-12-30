@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+<% block head_title %> Темы <% endblock head_title %>
+
+{%block content%}
+    <h3>
+        Пользователь {{request.user.username}}
+        {% if is_author %}
+         (автор)
+        {% endif %}
+    </h3>
+    <h1> Темы </h1>
+    <br>
+    {% if categories %}
+        <br>
+        <table>
+           {% for category in categories %}
+            <tr>
+                 <td>
+                     {{category.name}}
+                 </td>
+            </tr>
+            {% endfor %}
+        </table>
+      {% else %}
+        <h2> Тем нет </h2>
+    {% endif %}
+    <br>
+    <br>
+{% endblock content %}

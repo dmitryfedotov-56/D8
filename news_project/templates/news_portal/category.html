@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<% block head_title %> Темы <% endblock head_title %>
+
+{%block content%}
+    <h3>
+        Пользователь {{request.user.username}}
+        {% if is_author %}
+         (автор)
+        {% endif %}
+    </h3>
+    <br>
+    Подписки :
+    {% for s in subscriptions %} {{s}} {% endfor %}
+    <br>
+    <h1> Темы </h1>
+    <br>
+   {% if categories %}
+         <table>
+           {% for category in categories %}
+            <tr>
+                 <td>
+                     {{category.name}}
+                     {% if category.name in subscriptions %}
+                      <a href="{% url 'unsubscribe' category.id %}">Отписаться</a>
+                     {% else %}
+                     <a href="{% url 'subscribe' category.id %}">Подписаться</a>
+                     {% endif %}
+                 </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2> Тем нет </h2>
+    {% endif %}
+    <br>
+    <br>
+{% endblock content %}

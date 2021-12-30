@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Новый пост</h1>
+	<p>Название   : {{post_title}}</p>
+	<p>Автор	  : {{post_author}}</p>
+    <p>Тип	      : {{post_type}}</p>
+	<p>Содержание : {{post_text|truncatechars:20}}</p>
+    <p><a href="http://127.0.0.1:8000/show/{{post_id}}">Читать</a></p>
+    <p>
+        Вы получили это сообщение, т.к. подписаны на одну из тем поста.
+        <br>
+        Отписаться можно на <a href="http://127.0.0.1:8000/category">странице подписок</a>.
+    </p>
+
+</body>
+</html>

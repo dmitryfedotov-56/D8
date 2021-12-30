@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+<% block head_title %> Post <% endblock head_title %>
+
+{%block content%}
+    <h1> Пост </h1>
+    Название : {{post_detail.title}}<br>
+    Автор &nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.author}}<br>
+    Тип &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+        {{post_detail.post_type|appearance:'неизвестен'}}
+        <br>
+    Дата &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.time_stamp|date:'M d Y' }}&nbsp;{{ post_detail.time_stamp|time:"H:i" }}<br>
+	Рейтинг &nbsp; : {{post_detail.rating}}<br>
+	Темы &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.category_list}}<br>
+    Текст &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{post_detail.text|censor:'плохое'}}
+
+    {% block confirmation %}
+    {% endblock confirmation %}
+{% endblock content %}
+
